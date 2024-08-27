@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug Tomcat Server (8080)",
+            "request": "launch",
+            "mainClass": "org.apache.catalina.startup.Catalina",
+            "args": "start",
+            "vmArgs": "-Dcatalina.home=/Users/mreddy/Downloads/apache-tomcat -Djava.endorsed.dirs=/Users/mreddy/Downloads/apache-tomcat/endorsed",
+            "env": {
+                "CATALINA_HOME": "/Users/mreddy/Downloads/apache-tomcat",
+                "JAVA_HOME": "/Users/mreddy/Downloads/jdk-22.jdk/Contents/Home"
+            },
+            "preLaunchTask": "build",
+            "postDebugTask": "clean"
+        }
+    ]
+}

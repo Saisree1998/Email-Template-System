@@ -1,0 +1,36 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.import.gradle.enabled": false,
+    "java.import.maven.enabled": false,
+    "tomcat-server.runtime": "/Users/mreddy/Downloads/apache-tomcat/",
+    "tomcat-server.deployOnStartup": true,
+    "tomcat-server.contextPath": "/TemplateSystem",
+    "tomcat-server.webApp.docBase": "${workspaceFolder}/target",  // Points to the target directory where WAR file is created
+    "java.project.sourcePaths": [
+        "src/main/java"
+    ],
+    "java.project.outputPath": "target/classes",  // Output path should match where classes are being compiled
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "src/main/lib/**/*.jar",
+            "/Users/mreddy/Downloads/javamail-1.4.7/lib/**/*.jar",
+            "/Users/mreddy/Downloads/javax.servlet-api-3.1.0.jar",
+            "/Users/mreddy/Downloads/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar",
+            "/Users/mreddy/Downloads/javax.activation-1.2.0.jar",
+            "/Users/mreddy/Downloads/javax.mail-1.6.2.jar",
+            "/Users/mreddy/Downloads/google-api-java-client/libs/**/*.jar",
+            "/Users/mreddy/Desktop/TemplateSystem/lib/**/*.jar",
+            "/Users/mreddy/Downloads/google-api-client-auth-oauth2-1.2.3-alpha.jar",
+            "/Users/mreddy/Downloads/jstl-impl-1.2.jar",
+            "/Users/mreddy/Downloads/jstl-api-1.2.jar",
+            "/Users/mreddy/Downloads/json-20140107.jar"
+        ],
+        "exclude": [
+            "lib/commons-codec-1.15.jar",
+            "/Users/mreddy/Downloads/javamail-1.4.7/lib/dsn.jar",
+            "/Users/mreddy/Downloads/javamail-1.4.7/lib/gimap.jar",
+            "lib/google-api-client-1.33.0.jar"
+        ]
+    }
+}

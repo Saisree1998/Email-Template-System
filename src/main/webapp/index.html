@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Template System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(0, 123, 255, 0.7));
+            padding: 60px 20px; 
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            position: relative;
+        }
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            color: black; 
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: black; 
+        }
+        .login-container {
+            display: flex;
+            align-items: center;
+            position: absolute; 
+            top: 20px; 
+            right: 20px; 
+            text-decoration: none;
+            color: black; 
+        }
+        .login-icon {
+            width: 30px; 
+            height: 30px;
+            cursor: pointer;
+            filter: brightness(0); 
+        }
+        .login-container span {
+            margin-left: 5px; 
+        }
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h3 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .menu a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: white;
+            padding: 12px 20px;
+            background-color: #007bff;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .menu a:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .features {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .feature-card {
+            background: #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            flex: 1;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .feature-card h4 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px 0;
+            font-size: 0.9em;
+            background-color: #f0f2f5;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Email Template System</h1>
+        <p>Automate your email responses with ease</p>
+        <a href="login.jsp" class="login-container">
+            <img src="https://img.icons8.com/?size=100&id=26231&format=png&color=000000" class="login-icon" alt="Login Icon" /> 
+            <span>Login</span>
+        </a>
+    </header>
+
+    <div class="container">
+        <h3>Welcome!</h3>
+        <p style="text-align: center; font-size: 1.2em;">This system allows you to generate emails based on selected templates, saving you time and reducing errors by automating your email responses.</p>
+
+        <div class="menu">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h4>Easy to Use</h4>
+                <p>A user-friendly interface to create and manage your email templates.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Dynamic Personalization</h4>
+                <p>Use dynamic fields to personalize each email for your recipients.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Loop Functionality</h4>
+                <p>Include loops for multiple items, making it easy to manage various requests in a single email.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Email Template System. All rights reserved.</p>
+    </footer>
+</body>
+</html>
