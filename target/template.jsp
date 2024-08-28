@@ -36,41 +36,53 @@ header p {
 }
 
 .container {
-    max-width: 1100px;
+    max-width: 800px; /* Compact container for better focus */
     margin: 40px auto;
     background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2, h3 {
     color: #242f60;
 }
 
-label {
-    display: block;
-    margin: 15px 0 5px;
-    font-weight: bold;
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Increased margin for better spacing */
 }
 
-input, textarea, select {
-    width: 100%;
+.form-group label {
+    flex: 0 0 180px; /* Fixed width for labels */
+    margin-right: 15px;
+    text-align: right;
+    font-weight: bold;
+    font-size: 1em; /* Standardized font size */
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    flex: 1;
+    max-width: 500px; /* Adjusted max width for inputs */
     padding: 12px;
-    margin-bottom: 15px;
     border: 1px solid #ced4da;
     border-radius: 5px;
     box-sizing: border-box;
     transition: border-color 0.3s;
 }
 
-input:focus, textarea:focus, select:focus {
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
     border-color: #242f60;
     outline: none;
 }
 
 button {
-    padding: 12px 25px;
+    padding: 12px 24px;
     background-color: #242f60;
     color: white;
     border: none;
@@ -79,10 +91,11 @@ button {
     transition: background-color 0.3s;
     width: 48%;
     margin: 5px 1%;
+    font-size: 1em; /* Uniform font size for buttons */
 }
 
 button:hover {
-    background-color: #242f60;
+    background-color: #1b2a54;
 }
 
 .coursework-item {
@@ -138,6 +151,7 @@ footer {
     justify-content: space-between;
     margin-top: 20px;
 }
+
 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -202,25 +216,25 @@ footer {
         %>
 
         <form id="emailForm" method="post" action="/TemplateSystem/generateEmail">
-            <div>
+            <div class="form-group">
                 <label for="studentId">Student ID: <span class="required">*</span></label>
                 <input type="text" id="studentId" name="studentId" required>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="studentFirstName">Student First Name: <span class="required">*</span></label>
                 <input type="text" id="studentFirstName" name="studentFirstName" required readonly>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="studentLastName">Student Last Name: <span class="required">*</span></label>
                 <input type="text" id="studentLastName" name="studentLastName" required readonly>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="studentEmail">Student Email: <span class="required">*</span></label>
                 <input type="email" id="studentEmail" name="studentEmail" required readonly>
             </div>            
             <div id="module-container">
                 <h3>Module Details</h3>
-                <div class="module-item">
+                <div class="form-group">
                     <label for="moduleTitle">Module Title: <span class="required">*</span></label>
                     <select class="moduleTitle" name="moduleTitle" id="moduleTitle" required>
                         <option value="" disabled selected>Select Module</option>
@@ -230,7 +244,7 @@ footer {
                     </select>
                 </div>
                 
-                <div>
+                <div class="form-group">
                     <label for="courseworkTitle">Select Coursework: <span class="required">*</span></label>
                     <select class="courseworkSelect" name="courseworkTitle" required>
                         <option value="" disabled selected>Select Coursework</option>
@@ -243,15 +257,15 @@ footer {
                         %>
                     </select>
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="originalDeadline">Original Deadline: <span class="required">*</span></label>
                     <input type="date" class="originalDeadline" name="originalDeadline" required>
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="RequestedExtension">Requested Extension: <span class="required">*</span></label>
                     <input type="date" class="RequestedExtension" name="RequestedExtension" required>
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="decision">Decision: <span class="required">*</span></label>
                     <select class="decision" name="decision" required>
                         <option value="" disabled selected>Select Decision</option>
@@ -259,7 +273,7 @@ footer {
                         <option value="Denied">Denied</option>
                     </select>
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="comments">Comments:</label>
                     <textarea class="comments" name="comments"></textarea>
                 </div>
