@@ -4,57 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Email Template System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif; 
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-        }
-        header {
-            background-color: #0069d9; 
-            color: white;
-            padding: 30px 0;
-            text-align: center;
-            border-bottom: 4px solid #0056b3;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            margin-bottom: 20px;
-            font-size: 2.5em;
-        }
-        h2 {
-            color: #343a40;
-            margin-top: 20px;
-        }
-        p {
-            line-height: 1.6;
-            margin: 10px 0;
-        }
-        .team-member {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .team-member img {
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-            margin-right: 15px;
-        }
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #666;
-        }
+    font-family: 'Roboto', sans-serif; 
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: hsl(63, 37%, 20%);
+}
+
+header {
+    background-color: #242f60; 
+    color: white;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+header h1 {
+    font-family: 'Jost', sans-serif;
+    font-size: 3em;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #242f60;
+    margin-top: 20px;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #242f60;
+}
+
+p {
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.team-member {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.team-member img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px 0;
+    font-size: 0.9em;
+    background-color: #242f60;
+    color: #666;
+}
+
     </style>
 </head>
 <body>
@@ -65,7 +94,7 @@
 
     <div class="container">
         <h2>Our Purpose</h2>
-        <p>The Email Template System is mainly created for staff to streamline responses to student extenuating circumstances requests, ensuring effective communication.</p>
+        <p>The Email Template System is mainly created for Swansea University staff to streamline responses to student extenuating circumstances requests, ensuring effective communication.</p>
         
         <h2>Meet the Developer</h2>
         <div class="team-member">
@@ -75,8 +104,11 @@
                 <p>MSc Computer Science Student at Swansea University, passionate about enhancing communication in academia through technology.</p>
             </div>
         </div>
+        <div class="back-home">
+            <a href="index.html">Back to Home</a>
+        </div>
     </div>
-
+    
     <footer>
         <p>&copy; 2024 Email Template System. All rights reserved.</p>
     </footer>

@@ -18,6 +18,7 @@ public class GetStudentDetailsServlet extends HttpServlet {
     private static final String JDBC_USER = "root";
     private static final String JDBC_PASSWORD = "Sivasai@20";
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String studentId = request.getParameter("studentId");
         response.setContentType("application/json");
@@ -35,7 +36,8 @@ public class GetStudentDetailsServlet extends HttpServlet {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
 
-                String query = "SELECT first_name, last_name FROM students WHERE student_id = ?";
+                // Updated query to fetch first name, last name, and email
+                String query = "SELECT first_name, last_name, email FROM students WHERE student_id = ?";
                 pstmt = conn.prepareStatement(query);
                 pstmt.setString(1, studentId);
                 rs = pstmt.executeQuery();
@@ -43,7 +45,10 @@ public class GetStudentDetailsServlet extends HttpServlet {
                 if (rs.next()) {
                     String firstName = rs.getString("first_name");
                     String lastName = rs.getString("last_name");
-                    jsonResponse = String.format("{\"success\":true, \"firstName\":\"%s\", \"lastName\":\"%s\"}", firstName, lastName);
+                    String email = rs.getString("email");
+
+                    // Include email in the JSON response
+                    jsonResponse = String.format("{\"success\":true, \"firstName\":\"%s\", \"lastName\":\"%s\", \"email\":\"%s\"}", firstName, lastName, email);
                 } else {
                     jsonResponse = "{\"success\":false, \"message\":\"No student found with the provided ID.\"}";
                 }

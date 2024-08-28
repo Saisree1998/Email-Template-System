@@ -6,119 +6,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Template System - Generate Email</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif; 
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa; 
-        }
-        header {
-            background-color: #0069d9; 
-            color: white;
-            padding: 30px 0;
-            text-align: center;
-            border-bottom: 4px solid #0056b3;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            margin: 0 0 10px;
-            font-size: 2.5em;
-        }
-        h2, h3 {
-            color: #343a40;
-        }
-        label {
-            display: block;
-            margin: 15px 0 5px;
-            font-weight: bold;
-        }
-        input, textarea, select {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            box-sizing: border-box;
-            transition: border-color 0.3s;
-        }
-        input:focus, textarea:focus, select:focus {
-            border-color: #0069d9;
-            outline: none;
-        }
-        button {
-            padding: 12px 25px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            width: 48%;
-            margin: 5px 1%;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        .coursework-item {
-            margin-bottom: 20px;
-            padding: 20px;
-            border: 1px solid #e9ecef;
-            border-radius: 5px;
-            background-color: #f1f3f5;
-        }
-        .required {
-            color: #dc3545;
-        }
-        .template-overview {
-            display: none;
-            margin: 20px 0;
-            padding: 15px;
-            background-color: #e2e3e5;
-            border: 1px solid #d3d3d3;
-            border-radius: 5px;
-        }
-        .success-message {
-            background-color: #d4edda;
-            color: #155724;
-            padding: 10px;
-            border: 1px solid #c3e6cb;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        .error-message {
-            background-color: #f8d7da;
-            color: #721c24;
-            padding: 10px;
-            border: 1px solid #f5c6cb;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #666;
-        }
-        .button-container {
-            display: flex;
-            justify-content: space-between; 
-            margin-top: 20px; 
-        }
+    font-family: 'Roboto', sans-serif; 
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: hsl(63, 37%, 20%);
+}
+
+header {
+    background-color: #242f60; 
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-family: 'Jost', sans-serif;
+    font-size: 3em;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: #242f60;
+}
+
+label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: bold;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #242f60;
+    outline: none;
+}
+
+button {
+    padding: 12px 25px;
+    background-color: #242f60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 48%;
+    margin: 5px 1%;
+}
+
+button:hover {
+    background-color: #242f60;
+}
+
+.coursework-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    background-color: #f1f3f5;
+}
+
+.required {
+    color: #dc3545;
+}
+
+.template-overview {
+    display: none;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #e2e3e5;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px 0;
+    font-size: 0.9em;
+    background-color: #242f60;
+    color: #666;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="template.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Email Template System</h1>
+        <img src="images/uni_logo.jpeg" alt="University Logo" style="width: 125px; height: auto; margin-bottom: 20px;" />
         <p>Generate emails with ease and precision</p>
     </header>
 
@@ -187,6 +214,10 @@
                 <label for="studentLastName">Student Last Name: <span class="required">*</span></label>
                 <input type="text" id="studentLastName" name="studentLastName" required readonly>
             </div>
+            <div>
+                <label for="studentEmail">Student Email: <span class="required">*</span></label>
+                <input type="email" id="studentEmail" name="studentEmail" required readonly>
+            </div>            
             <div id="module-container">
                 <h3>Module Details</h3>
                 <div class="module-item">

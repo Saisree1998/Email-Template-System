@@ -131,88 +131,91 @@ public class GenerateEmailServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("doPost invoked");
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    System.out.println("doPost invoked");
 
-        // Retrieve parameters
-        String studentId = request.getParameter("studentId");
-        String studentFirstName = request.getParameter("studentFirstName");
-        String studentLastName = request.getParameter("studentLastName");
+    // Retrieve parameters
+    String studentId = request.getParameter("studentId");
+    String studentFirstName = request.getParameter("studentFirstName");
+    String studentLastName = request.getParameter("studentLastName");
+    String studentEmail = request.getParameter("studentEmail"); // Retrieve the student's email
 
-        String[] moduleTitles = request.getParameterValues("moduleTitle");
-        String[] courseworkTitles = request.getParameterValues("courseworkTitle");
-        String[] originalDeadlines = request.getParameterValues("originalDeadline");
-        String[] requestedExtensions = request.getParameterValues("RequestedExtension");
-        String[] decisions = request.getParameterValues("decision");
-        String[] comments = request.getParameterValues("comments");
+    String[] moduleTitles = request.getParameterValues("moduleTitle");
+    String[] courseworkTitles = request.getParameterValues("courseworkTitle");
+    String[] originalDeadlines = request.getParameterValues("originalDeadline");
+    String[] requestedExtensions = request.getParameterValues("RequestedExtension");
+    String[] decisions = request.getParameterValues("decision");
+    String[] comments = request.getParameterValues("comments");
 
-        // Debugging parameter retrieval
-        System.out.println("Received Parameters: ");
-        System.out.println("StudentId: " + studentId);
-        System.out.println("First Name: " + studentFirstName);
-        System.out.println("Last Name: " + studentLastName);
+    // Debugging parameter retrieval
+    System.out.println("Received Parameters: ");
+    System.out.println("StudentId: " + studentId);
+    System.out.println("First Name: " + studentFirstName);
+    System.out.println("Last Name: " + studentLastName);
+    System.out.println("Student Email: " + studentEmail); // Debugging student email
 
-        // Validate required fields
-        if (studentId == null || studentFirstName == null || studentLastName == null) {
-            request.setAttribute("message", "Missing required student information.");
-            request.getRequestDispatcher("template.jsp").forward(request, response);
-            return; // Stop further processing
-        }
-
-        // Check module and coursework details
-        if (moduleTitles != null && moduleTitles.length > 0) {
-            for (int i = 0; i < moduleTitles.length; i++) {
-                // Ensure all coursework details are available
-                if (courseworkTitles != null && originalDeadlines != null && requestedExtensions != null && decisions != null && comments != null) {
-                    if (i < courseworkTitles.length && i < originalDeadlines.length && i < requestedExtensions.length &&
-                            i < decisions.length && i < comments.length) {
-                        System.out.println("Module Title: " + moduleTitles[i]);
-                        System.out.println("Coursework Title: " + courseworkTitles[i]);
-                        System.out.println("Original Deadline: " + originalDeadlines[i]);
-                        System.out.println("Requested Extension: " + requestedExtensions[i]);
-                        System.out.println("Decision: " + decisions[i]);
-                        System.out.println("Comments: " + comments[i]);
-                    } else {
-                        System.out.println("Mismatch in coursework details for index: " + i);
-                    }
-                } else {
-                    System.out.println("One or more coursework detail arrays are null.");
-                }
-            }
-        } else {
-            System.out.println("No module titles provided.");
-            request.setAttribute("message", "No module titles provided.");
-            request.getRequestDispatcher("template.jsp").forward(request, response);
-            return; // Stop further processing
-        }
-
-        try {
-            Gmail service = getGmailService(request, response);
-            if (service == null) {
-                System.out.println("Gmail service is null, redirecting for authorization");
-                request.setAttribute("message", "Gmail service is unavailable. Please authorize.");
-                request.getRequestDispatcher("template.jsp").forward(request, response);
-                return; // Stop further processing
-            }
-
-            // Generate the email content
-            String emailContent = generateEmailContent(studentId, studentFirstName, studentLastName,
-                    moduleTitles, courseworkTitles, originalDeadlines, requestedExtensions, decisions, comments);
-
-            // Save the email as a draft
-            if (saveEmailDraftInGmail(service, emailContent)) {
-                request.setAttribute("message", "Email draft successfully saved.");
-            } else {
-                request.setAttribute("message", "Failed to save email draft.");
-            }
-
-            request.getRequestDispatcher("template.jsp").forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-            request.setAttribute("message", "An error occurred while processing your request: " + e.getMessage());
-            request.getRequestDispatcher("template.jsp").forward(request, response);
-        }
+    // Validate required fields
+    if (studentId == null || studentFirstName == null || studentLastName == null || studentEmail == null) {
+        request.setAttribute("message", "Missing required student information.");
+        request.getRequestDispatcher("template.jsp").forward(request, response);
+        return; // Stop further processing
     }
+
+    // Check module and coursework details
+    if (moduleTitles != null && moduleTitles.length > 0) {
+        for (int i = 0; i < moduleTitles.length; i++) {
+            // Ensure all coursework details are available
+            if (courseworkTitles != null && originalDeadlines != null && requestedExtensions != null && decisions != null && comments != null) {
+                if (i < courseworkTitles.length && i < originalDeadlines.length && i < requestedExtensions.length &&
+                        i < decisions.length && i < comments.length) {
+                    System.out.println("Module Title: " + moduleTitles[i]);
+                    System.out.println("Coursework Title: " + courseworkTitles[i]);
+                    System.out.println("Original Deadline: " + originalDeadlines[i]);
+                    System.out.println("Requested Extension: " + requestedExtensions[i]);
+                    System.out.println("Decision: " + decisions[i]);
+                    System.out.println("Comments: " + comments[i]);
+                } else {
+                    System.out.println("Mismatch in coursework details for index: " + i);
+                }
+            } else {
+                System.out.println("One or more coursework detail arrays are null.");
+            }
+        }
+    } else {
+        System.out.println("No module titles provided.");
+        request.setAttribute("message", "No module titles provided.");
+        request.getRequestDispatcher("template.jsp").forward(request, response);
+        return; // Stop further processing
+    }
+
+    try {
+        Gmail service = getGmailService(request, response);
+        if (service == null) {
+            System.out.println("Gmail service is null, redirecting for authorization");
+            request.setAttribute("message", "Gmail service is unavailable. Please authorize.");
+            request.getRequestDispatcher("template.jsp").forward(request, response);
+            return; // Stop further processing
+        }
+
+        // Generate the email content
+        String emailContent = generateEmailContent(studentId, studentFirstName, studentLastName,
+                moduleTitles, courseworkTitles, originalDeadlines, requestedExtensions, decisions, comments);
+
+        // Save the email as a draft
+        if (saveEmailDraftInGmail(service, studentEmail, emailContent)) {
+            request.setAttribute("message", "Email draft successfully saved.");
+        } else {
+            request.setAttribute("message", "Failed to save email draft.");
+        }
+
+        request.getRequestDispatcher("template.jsp").forward(request, response);
+    } catch (Exception e) {
+        e.printStackTrace();
+        request.setAttribute("message", "An error occurred while processing your request: " + e.getMessage());
+        request.getRequestDispatcher("template.jsp").forward(request, response);
+    }
+}
+
 
     private void handleOAuthCallback(String code, HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
@@ -285,9 +288,9 @@ public class GenerateEmailServlet extends HttpServlet {
         return emailContent.toString();
     }
 
-    private boolean saveEmailDraftInGmail(Gmail service, String emailContent) {
+    private boolean saveEmailDraftInGmail(Gmail service, String recipientEmail, String emailContent) {
         try {
-            Message message = createMessageWithEmail(emailContent);
+            Message message = createMessageWithEmail(recipientEmail, emailContent);
             Draft draft = new Draft().setMessage(message);
             draft = service.users().drafts().create("me", draft).execute();
             System.out.println("Draft created with ID: " + draft.getId());
@@ -298,10 +301,15 @@ public class GenerateEmailServlet extends HttpServlet {
             return false;
         }
     }
+    
 
-    private Message createMessageWithEmail(String emailContent) throws IOException {
-        String raw = String.format("From: extenuatingcircumstances@swansea.ac.uk\nTo: recipient@example.com\nSubject: Update on Your Extenuating Circumstances Request\n\n%s", emailContent);
+    private Message createMessageWithEmail(String recipientEmail, String emailContent) throws IOException {
+        String raw = String.format("From: extenuatingcircumstances@swansea.ac.uk\nTo: %s\nSubject: Update on Your Extenuating Circumstances Request\n\n%s",
+                recipientEmail, emailContent);
         String encodedEmail = Base64.getUrlEncoder().withoutPadding().encodeToString(raw.getBytes());
-        return new Message().setRaw(encodedEmail);
+        Message message = new Message();
+        message.setRaw(encodedEmail);
+        return message;
     }
+    
 }

@@ -12,6 +12,7 @@ $(document).ready(function() {
                     if (response.success) {
                         $('#studentFirstName').val(response.firstName);
                         $('#studentLastName').val(response.lastName);
+                        $('#studentEmail').val(response.email);
                     } else {
                         alert(response.message);
                     }
@@ -22,6 +23,8 @@ $(document).ready(function() {
             });
         }
     });
+
+
 
     window.addModule = function() {
         $.ajax({

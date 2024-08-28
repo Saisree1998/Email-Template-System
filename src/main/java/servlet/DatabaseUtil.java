@@ -33,31 +33,6 @@ public class DatabaseUtil {
         return false;
     }
 
-    // Method to register a user
-    public static boolean registerUser(String username, String email, String password) {
-        try {
-            if (userExists(username)) {
-                return false; // User already exists
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false; // Registration failed due to an error
-        }
-
-        String query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-
-        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, username);
-            stmt.setString(2, email);
-            stmt.setString(3, password); 
-            
-            return stmt.executeUpdate() > 0; // Return true if user was inserted
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false; // Registration failed
-        }
-    }
-
     // Save OAuth tokens
     public static void saveOAuthTokens(String userId, String accessToken, String refreshToken, Timestamp tokenExpiry) throws SQLException {
         String query = "INSERT INTO oauth_tokens (user_id, access_token, refresh_token, token_expiry) VALUES (?, ?, ?, ?) " +
