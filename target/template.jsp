@@ -36,7 +36,7 @@ header p {
 }
 
 .container {
-    max-width: 800px; /* Compact container for better focus */
+    max-width: 800px; 
     margin: 40px auto;
     background: white;
     padding: 30px;
@@ -51,22 +51,22 @@ h1, h2, h3 {
 .form-group {
     display: flex;
     align-items: center;
-    margin-bottom: 20px; /* Increased margin for better spacing */
+    margin-bottom: 20px; 
 }
 
 .form-group label {
-    flex: 0 0 180px; /* Fixed width for labels */
+    flex: 0 0 180px; 
     margin-right: 15px;
     text-align: right;
     font-weight: bold;
-    font-size: 1em; /* Standardized font size */
+    font-size: 1em; 
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select {
     flex: 1;
-    max-width: 500px; /* Adjusted max width for inputs */
+    max-width: 500px; 
     padding: 12px;
     border: 1px solid #ced4da;
     border-radius: 5px;
@@ -91,7 +91,7 @@ button {
     transition: background-color 0.3s;
     width: 48%;
     margin: 5px 1%;
-    font-size: 1em; /* Uniform font size for buttons */
+    font-size: 1em; 
 }
 
 button:hover {

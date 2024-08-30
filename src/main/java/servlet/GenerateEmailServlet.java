@@ -254,39 +254,54 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     }
 
     private String generateEmailContent(
-        String studentId, 
-        String studentFirstName, 
-        String studentLastName, 
-        String[] moduleTitles, 
-        String[] courseworkTitles, 
-        String[] courseworkOriginalDeadlines, 
-        String[] courseworkRequestedExtensions, 
-        String[] decisions, 
-        String[] comments
-    ) {
-        StringBuilder emailContent = new StringBuilder();
-
-        emailContent.append("Dear ").append(studentFirstName)
-            .append(" ").append(studentLastName)
-            .append(" (").append(studentId).append("),\n\n");
-        
-        emailContent.append("Thank you for your application for an extension to your coursework deadlines due to extenuating circumstances. Below are the decisions for your requests:\n\n");
-
-        for (int i = 0; i < courseworkTitles.length; i++) {
-            emailContent.append("Module: ").append(moduleTitles[i])
-                .append(", ").append(courseworkTitles[i]).append("\n")
-                .append("Original Deadline: ").append(courseworkOriginalDeadlines[i]).append("\n")
-                .append("Requested Extension: ").append(courseworkRequestedExtensions[i]).append("\n")
-                .append("Decision: ").append(decisions[i]).append("\n")
-                .append("Comments: ").append((comments[i] != null && !comments[i].isEmpty()) ? comments[i] : "None").append("\n\n");
-        }
-
-        emailContent.append("If you have any questions or require further assistance, please do not hesitate to reach out to us.\n\n")
-            .append("Best regards,\nSwansea University,\n")
-            .append("Email: extenuatingcircumstances@swansea.ac.uk\n");
-
-        return emailContent.toString();
+    String studentId, 
+    String studentFirstName, 
+    String studentLastName, 
+    String[] moduleTitles, 
+    String[] courseworkTitles, 
+    String[] courseworkOriginalDeadlines, 
+    String[] courseworkRequestedExtensions, 
+    String[] decisions, 
+    String[] comments
+) {
+    String templateName = "coursework_extension_request";
+    String template;
+    
+    // Fetching the template from the database
+    try {
+        template = DatabaseUtil.getEmailTemplate(templateName);
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return "Failed to retrieve email template.";
     }
+
+    if (template == null) {
+        return "Template not found.";
+    }
+
+    // Replacing placeholders with actual data
+    template = template.replace("{studentId}", studentId)
+                       .replace("{studentFirstName}", studentFirstName)
+                       .replace("{studentLastName}", studentLastName);
+
+    StringBuilder courseworkDetails = new StringBuilder();
+    for (int i = 0; i < courseworkTitles.length; i++) {
+        courseworkDetails.append(String.format(
+            "Module: %s, %s\nOriginal Deadline: %s\nRequested Extension: %s\nDecision: %s\nComments: %s\n\n",
+            moduleTitles[i],
+            courseworkTitles[i],
+            courseworkOriginalDeadlines[i],
+            courseworkRequestedExtensions[i],
+            decisions[i],
+            comments[i] != null && !comments[i].isEmpty() ? comments[i] : "None"
+        ));
+    }
+
+    template = template.replace("{courseworkDetails}", courseworkDetails.toString());
+
+    return template;
+}
+
 
     private boolean saveEmailDraftInGmail(Gmail service, String recipientEmail, String emailContent) {
         try {

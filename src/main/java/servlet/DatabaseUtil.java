@@ -11,7 +11,7 @@ public class DatabaseUtil {
     // To establish a database connection
     public static Connection getConnection() throws SQLException {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver"); // Load MySQL JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver"); 
         } catch (ClassNotFoundException e) {
             throw new SQLException("MySQL JDBC Driver not found.", e);
         }
@@ -64,6 +64,22 @@ public class DatabaseUtil {
             }
         }
         return null;
+    }
+
+    // Retrieve email template content by name
+    public static String getEmailTemplate(String templateName) throws SQLException {
+        String templateContent = null;
+        String query = "SELECT template_content FROM email_templates WHERE template_name = ?";
+
+        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, templateName);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    templateContent = rs.getString("template_content");
+                }
+            }
+        }
+        return templateContent;
     }
 
     // Test connection method

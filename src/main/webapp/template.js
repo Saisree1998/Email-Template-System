@@ -24,8 +24,6 @@ $(document).ready(function() {
         }
     });
 
-
-
     window.addModule = function() {
         $.ajax({
             url: 'ModuleAndCourseworkServlet',
@@ -35,30 +33,32 @@ $(document).ready(function() {
                 if (response.success) {
                     const container = document.getElementById('module-container');
                     const moduleItem = document.createElement('div');
-                    moduleItem.className = 'module-item';
+                    moduleItem.className = 'module-item';  // Ensure class name matches with template.jsp
                     
                     moduleItem.innerHTML = `
-                        <label for="moduleTitle">Module Title: <span class="required">*</span></label>
-                        <select class="moduleTitle" name="moduleTitle" required>
-                            <option value="" disabled selected>Select Module</option>
-                            ${response.modules.map(module => `<option value="${module.moduleName}">${module.moduleName}</option>`).join('')}
-                        </select>
-                        <div>
+                        <div class="form-group">
+                            <label for="moduleTitle">Module Title: <span class="required">*</span></label>
+                            <select class="moduleTitle" name="moduleTitle" required>
+                                <option value="" disabled selected>Select Module</option>
+                                ${response.modules.map(module => `<option value="${module.moduleId}">${module.moduleName}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="courseworkTitle">Select Coursework: <span class="required">*</span></label>
                             <select class="courseworkSelect" name="courseworkTitle" required>
                                 <option value="" disabled selected>Select Coursework</option>
                                 ${response.courseworkTitles.map(title => `<option value="${title}">${title}</option>`).join('')}
                             </select>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <label for="originalDeadline">Original Deadline: <span class="required">*</span></label>
                             <input type="date" class="originalDeadline" name="originalDeadline" required>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <label for="RequestedExtension">Requested Extension: <span class="required">*</span></label>
                             <input type="date" class="RequestedExtension" name="RequestedExtension" required>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <label for="decision">Decision: <span class="required">*</span></label>
                             <select class="decision" name="decision" required>
                                 <option value="" disabled selected>Select Decision</option>
@@ -66,7 +66,7 @@ $(document).ready(function() {
                                 <option value="Denied">Denied</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <label for="comments">Comments:</label>
                             <textarea class="comments" name="comments"></textarea>
                         </div>
@@ -82,5 +82,4 @@ $(document).ready(function() {
             }
         });
     }
-    
 });
