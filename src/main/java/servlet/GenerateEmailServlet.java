@@ -138,7 +138,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     String studentId = request.getParameter("studentId");
     String studentFirstName = request.getParameter("studentFirstName");
     String studentLastName = request.getParameter("studentLastName");
-    String studentEmail = request.getParameter("studentEmail"); // Retrieve the student's email
+    String studentEmail = request.getParameter("studentEmail"); 
 
     String[] moduleTitles = request.getParameterValues("moduleTitle");
     String[] courseworkTitles = request.getParameterValues("courseworkTitle");
@@ -147,46 +147,68 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     String[] decisions = request.getParameterValues("decision");
     String[] comments = request.getParameterValues("comments");
 
-    // Debugging parameter retrieval
+    /*Debugging parameter retrieval
     System.out.println("Received Parameters: ");
     System.out.println("StudentId: " + studentId);
     System.out.println("First Name: " + studentFirstName);
     System.out.println("Last Name: " + studentLastName);
-    System.out.println("Student Email: " + studentEmail); // Debugging student email
+    System.out.println("Student Email: " + studentEmail); */
 
-    // Validate required fields
+   
     if (studentId == null || studentFirstName == null || studentLastName == null || studentEmail == null) {
         request.setAttribute("message", "Missing required student information.");
         request.getRequestDispatcher("template.jsp").forward(request, response);
-        return; // Stop further processing
+        return; 
     }
-
-    // Check module and coursework details
-    if (moduleTitles != null && moduleTitles.length > 0) {
-        for (int i = 0; i < moduleTitles.length; i++) {
-            // Ensure all coursework details are available
-            if (courseworkTitles != null && originalDeadlines != null && requestedExtensions != null && decisions != null && comments != null) {
-                if (i < courseworkTitles.length && i < originalDeadlines.length && i < requestedExtensions.length &&
-                        i < decisions.length && i < comments.length) {
-                    System.out.println("Module Title: " + moduleTitles[i]);
-                    System.out.println("Coursework Title: " + courseworkTitles[i]);
-                    System.out.println("Original Deadline: " + originalDeadlines[i]);
-                    System.out.println("Requested Extension: " + requestedExtensions[i]);
-                    System.out.println("Decision: " + decisions[i]);
-                    System.out.println("Comments: " + comments[i]);
-                } else {
-                    System.out.println("Mismatch in coursework details for index: " + i);
-                }
-            } else {
-                System.out.println("One or more coursework detail arrays are null.");
-            }
-        }
-    } else {
-        System.out.println("No module titles provided.");
-        request.setAttribute("message", "No module titles provided.");
+    // Validate Student ID
+    if (studentId == null || !studentId.matches("\\d+")) {
+        request.setAttribute("message", "Student ID must be a valid integer.");
         request.getRequestDispatcher("template.jsp").forward(request, response);
-        return; // Stop further processing
+        return;
     }
+  // Validating module and coursework details
+  if (moduleTitles != null && moduleTitles.length > 0) {
+    for (int i = 0; i < moduleTitles.length; i++) {
+        // Ensure all coursework details are available
+        if (courseworkTitles != null && originalDeadlines != null && requestedExtensions != null && decisions != null && comments != null) {
+            if (i < courseworkTitles.length && i < originalDeadlines.length && i < requestedExtensions.length &&
+                    i < decisions.length && i < comments.length) {
+                
+                // Date validation
+                try {
+                    Timestamp originalDeadline = Timestamp.valueOf(originalDeadlines[i] + " 00:00:00");
+                    Timestamp requestedExtension = Timestamp.valueOf(requestedExtensions[i] + " 00:00:00");
+                    if (originalDeadline.equals(requestedExtension)) {
+                        request.setAttribute("message", "Original Deadline and Requested Extension must not be the same date.");
+                        request.getRequestDispatcher("template.jsp").forward(request, response);
+                        return;
+                    }
+                } catch (Exception e) {
+                    request.setAttribute("message", "Invalid date format.");
+                    request.getRequestDispatcher("template.jsp").forward(request, response);
+                    return;
+                }
+                
+                System.out.println("Module Title: " + moduleTitles[i]);
+                System.out.println("Coursework Title: " + courseworkTitles[i]);
+                System.out.println("Original Deadline: " + originalDeadlines[i]);
+                System.out.println("Requested Extension: " + requestedExtensions[i]);
+                System.out.println("Decision: " + decisions[i]);
+                System.out.println("Comments: " + comments[i]);
+            } else {
+                System.out.println("Mismatch in coursework details for index: " + i);
+            }
+        } else {
+            System.out.println("One or more coursework detail arrays are null.");
+        }
+    }
+} else {
+    System.out.println("No module titles provided.");
+    request.setAttribute("message", "No module titles provided.");
+    request.getRequestDispatcher("template.jsp").forward(request, response);
+    return;
+}
+
 
     try {
         Gmail service = getGmailService(request, response);

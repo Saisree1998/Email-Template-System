@@ -32,5 +32,6 @@
             "/Users/mreddy/Downloads/javamail-1.4.7/lib/gimap.jar",
             "lib/google-api-client-1.33.0.jar"
         ]
-    }
+    },
+    "codesnap.target": "window"
 }

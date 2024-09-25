@@ -26,7 +26,7 @@ public class DatabaseUtil {
             stmt.setString(1, username);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    return rs.getInt(1) > 0; // If count is greater than 0, user exists
+                    return rs.getInt(1) > 0; 
                 }
             }
         }

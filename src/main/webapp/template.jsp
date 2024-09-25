@@ -10,155 +10,156 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
-    font-family: 'Roboto', sans-serif; 
-    margin: 0;
-    padding: 0;
-    background-color: #f0f2f5;
-    color: hsl(63, 37%, 20%);
-}
+            font-family: 'Roboto', sans-serif; 
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: hsl(63, 37%, 20%);
+        }
 
-header {
-    background-color: #242f60; 
-    color: white;
-    padding: 60px 20px;
-    text-align: center;
-}
+        header {
+            background-color: #242f60; 
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
 
-header h1 {
-    font-family: 'Jost', sans-serif;
-    font-size: 3em;
-    margin: 0;
-}
+        header h1 {
+            font-family: 'Jost', sans-serif;
+            font-size: 3em;
+            margin: 0;
+        }
 
-header p {
-    font-size: 1.2em;
-    margin-top: 10px;
-}
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
 
-.container {
-    max-width: 800px; 
-    margin: 40px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
+        .container {
+            max-width: 800px; 
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
 
-h1, h2, h3 {
-    color: #242f60;
-}
+        h1, h2, h3 {
+            color: #242f60;
+        }
 
-.form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px; 
-}
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px; 
+        }
 
-.form-group label {
-    flex: 0 0 180px; 
-    margin-right: 15px;
-    text-align: right;
-    font-weight: bold;
-    font-size: 1em; 
-}
+        .form-group label {
+            flex: 0 0 180px; 
+            margin-right: 15px;
+            text-align: right;
+            font-weight: bold;
+            font-size: 1em; 
+        }
 
-.form-group input,
-.form-group textarea,
-.form-group select {
-    flex: 1;
-    max-width: 500px; 
-    padding: 12px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    box-sizing: border-box;
-    transition: border-color 0.3s;
-}
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            flex: 1;
+            max-width: 500px; 
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
 
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-    border-color: #242f60;
-    outline: none;
-}
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #242f60;
+            outline: none;
+        }
 
-button {
-    padding: 12px 24px;
-    background-color: #242f60;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 48%;
-    margin: 5px 1%;
-    font-size: 1em; 
-}
+        button {
+            padding: 12px 24px;
+            background-color: #242f60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 48%;
+            margin: 5px 1%;
+            font-size: 1em; 
+        }
 
-button:hover {
-    background-color: #1b2a54;
-}
+        button:hover {
+            background-color: #1b2a54;
+        }
 
-.coursework-item {
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 1px solid #e9ecef;
-    border-radius: 5px;
-    background-color: #f1f3f5;
-}
+        .coursework-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            background-color: #f1f3f5;
+        }
 
-.required {
-    color: #dc3545;
-}
+        .required {
+            color: #dc3545;
+        }
 
-.template-overview {
-    display: none;
-    margin: 20px 0;
-    padding: 15px;
-    background-color: #e2e3e5;
-    border: 1px solid #d3d3d3;
-    border-radius: 5px;
-}
+        .template-overview {
+            display: none;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e2e3e5;
+            border: 1px solid #d3d3d3;
+            border-radius: 5px;
+        }
 
-.success-message {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 10px;
-    border: 1px solid #c3e6cb;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
 
-.error-message {
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 10px;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
 
-footer {
-    text-align: center;
-    margin-top: 40px;
-    padding: 20px 0;
-    font-size: 0.9em;
-    background-color: #242f60;
-    color: #666;
-}
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px 0;
+            font-size: 0.9em;
+            background-color: #242f60;
+            color: #666;
+        }
 
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="template.js" defer></script>
 </head>
 <body>
-    <header>
+    <header style="position: relative;">
+        <div style="position: absolute; bottom: 20px; left: 20px;">
+            <a href="index.html" style="color: white; font-size: 1.2em; text-decoration: none;">Back to Home</a>
+        </div>
         <img src="images/uni_logo.jpeg" alt="University Logo" style="width: 125px; height: auto; margin-bottom: 20px;" />
         <p>Generate emails with ease and precision</p>
     </header>
@@ -167,7 +168,7 @@ footer {
         <%
             String message = (String) request.getAttribute("message");
             if (message != null) {
-                if (message.equals("Email draft created successfully.")) {
+                if (message.equals("Email draft successfully saved.")) {
         %>
             <div class="success-message"><%= message %></div>
         <%
@@ -234,59 +235,59 @@ footer {
             </div>            
             <div id="module-container">
                 <h3>Module Details</h3>
-                <div class="form-group">
-                    <label for="moduleTitle">Module Title: <span class="required">*</span></label>
-                    <select class="moduleTitle" name="moduleTitle" id="moduleTitle" required>
-                        <option value="" disabled selected>Select Module</option>
-                        <% for (int i = 0; i < moduleNames.size(); i++) { %>
-                            <option value="<%= moduleNames.get(i) %>"><%= moduleNames.get(i) %></option>
-                        <% } %>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="courseworkTitle">Select Coursework: <span class="required">*</span></label>
-                    <select class="courseworkSelect" name="courseworkTitle" required>
-                        <option value="" disabled selected>Select Coursework</option>
-                        <%
-                            for (String coursework : courseworkTitles) {
-                        %>
-                        <option value="<%= coursework %>"><%= coursework %></option>
-                        <%
-                            }
-                        %>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="originalDeadline">Original Deadline: <span class="required">*</span></label>
-                    <input type="date" class="originalDeadline" name="originalDeadline" required>
-                </div>
-                <div class="form-group">
-                    <label for="RequestedExtension">Requested Extension: <span class="required">*</span></label>
-                    <input type="date" class="RequestedExtension" name="RequestedExtension" required>
-                </div>
-                <div class="form-group">
-                    <label for="decision">Decision: <span class="required">*</span></label>
-                    <select class="decision" name="decision" required>
-                        <option value="" disabled selected>Select Decision</option>
-                        <option value="Approved">Approved</option>
-                        <option value="Denied">Denied</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="comments">Comments:</label>
-                    <textarea class="comments" name="comments"></textarea>
+                <div class="module-item">
+                    <div class="form-group">
+                        <label for="moduleTitle">Module Title: <span class="required">*</span></label>
+                        <select class="moduleTitle" name="moduleTitle" id="moduleTitle" required>
+                            <option value="" disabled selected>Select Module</option>
+                            <% for (int i = 0; i < moduleNames.size(); i++) { %>
+                                <option value="<%= moduleNames.get(i) %>"><%= moduleNames.get(i) %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="courseworkTitle">Select Coursework: <span class="required">*</span></label>
+                        <select class="courseworkSelect" name="courseworkTitle" required>
+                            <option value="" disabled selected>Select Coursework</option>
+                            <% for (String coursework : courseworkTitles) { %>
+                                <option value="<%= coursework %>"><%= coursework %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="originalDeadline">Original Deadline: <span class="required">*</span></label>
+                        <input type="date" class="originalDeadline" name="originalDeadline" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="RequestedExtension">Requested Extension: <span class="required">*</span></label>
+                        <input type="date" class="RequestedExtension" name="RequestedExtension" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="decision">Decision: <span class="required">*</span></label>
+                        <select class="decision" name="decision" required>
+                            <option value="" disabled selected>Select Decision</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Denied">Denied</option>
+                            <option value="RequiresAdditionalDocuments">Require Additional Documents</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="comments">Comments:</label>
+                        <textarea class="comments" name="comments"></textarea>
+                    </div>
                 </div>
             </div>
+
             <div class="button-container">
-                <button type="button" onclick="addModule()">Add Another Request</button>
+                <button type="button" onclick="addModule()">Add Another Module</button>
                 <button type="submit">Generate Email</button>
             </div>
         </form>
     </div>
 
     <footer>
-        <p>&copy; 2024 Email Template System</p>
+        <p>&copy; 2024 University Email System. All Rights Reserved.</p>
     </footer>
 </body>
 </html>

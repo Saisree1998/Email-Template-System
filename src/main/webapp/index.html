@@ -7,133 +7,139 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f2f5;
-    color: hsl(63, 37%, 20%);
-}
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: hsl(63, 37%, 20%);
+        }
 
-header {
-    background-color: #242f60;
-    padding: 60px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
+        header {
+            background-color: #242f60;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            text-align: center;
+        }
 
-header h1 {
-    font-family: 'Jost', sans-serif;
-    font-size: 3em;
-    margin: 0;
-    color: rgb(255, 255, 255);
-}
+        header h1 {
+            font-family: 'Jost', sans-serif;
+            font-size: 2.5em;
+            margin: 0;
+            color: rgb(255, 255, 255);
+        }
 
-header p {
-    font-size: 1.2em;
-    margin-top: 10px;
-    color: rgb(255, 255, 255);
-}
+        header p {
+            font-size: 1em;
+            margin-top: 5px;
+            color: rgb(255, 255, 255);
+        }
 
-.login-container {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: rgb(255, 255, 255);
-}
+        .login-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+        }
 
-.login-icon {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    filter: brightness(0) invert(1);
-}
+        .login-icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            filter: brightness(0) invert(1);
+        }
 
-.login-container span {
-    font-family: 'Jost', sans-serif;
-    font-weight: 700;
-    color: rgb(255, 255, 255);
-    margin-left: 5px;
-}
+        .login-container span {
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            color: rgb(255, 255, 255);
+            margin-left: 5px;
+        }
 
-.container {
-    max-width: 1100px;
-    margin: 40px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
 
-h3 {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 20px;
-}
+        h3 {
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
 
-.menu {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-}
+        .menu {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
 
-.menu a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    padding: 12px 20px;
-    background-color: #242f60;
-    border-radius: 50px;
-    transition: background-color 0.3s, transform 0.3s;
-}
+        .menu a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            padding: 10px 15px;
+            background-color: #242f60;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
 
-.menu a:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-}
+        .menu a:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
 
-.features {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
+        .features {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
 
-.feature-card {
-    background: #e9ecef;
-    border-radius: 8px;
-    padding: 20px;
-    flex: 1;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+        .feature-card {
+            background: #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            flex: 1 1 30%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
 
-.feature-card h4 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #242f60;
-}
+        .feature-card h4 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: #242f60;
+        }
 
-footer {
-    text-align: center;
-    margin-top: 40px;
-    padding: 20px 0;
-    font-size: 0.9em;
-    background-color: #242f60;
-    color: #666;
-}
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px 0;
+            font-size: 0.9em;
+            background-color: #242f60;
+            color: #666;
+        }
     </style>
 </head>
 <body>
     <header>
-        <img src="images/uni_logo.jpeg" alt="University Logo" style="width: 125px; height: auto; margin-bottom: 20px;" />
+        <img src="images/uni_logo.jpeg" alt="University Logo" style="width: 125px; height: auto; margin-bottom: 15px;" />
         <h1>Email Template System</h1>
         <p>Automate your email responses with ease</p>
         <a href="login.jsp" class="login-container">
@@ -144,7 +150,7 @@ footer {
 
     <div class="container">
         <h3>Welcome!</h3>
-        <p style="text-align: center; font-size: 1.2em;">This system allows you to generate emails based on selected templates, saving you time and reducing errors by automating your email responses.</p>
+        <p style="text-align: center; font-size: 1.1em;">This system makes it easy to generate email responses, saving you time and reducing mistakes by automating the process.</p>
 
         <div class="menu">
             <a href="about.html">About</a>
@@ -153,16 +159,16 @@ footer {
 
         <div class="features">
             <div class="feature-card">
-                <h4>Easy to Use</h4>
-                <p>A user-friendly interface to create and manage your email templates.</p>
+                <h4>User-Friendly Interface</h4>
+                <p>Navigate and manage emails effortlessly.</p>
             </div>
             <div class="feature-card">
-                <h4>Dynamic Personalization</h4>
-                <p>Use dynamic fields to personalize each email for your recipients.</p>
+                <h4>Draft-Saving feature</h4>
+                <p>Save and review drafts before sending.</p>
             </div>
             <div class="feature-card">
-                <h4>Loop Functionality</h4>
-                <p>Include loops for multiple items, making it easy to manage various requests in a single email.</p>
+                <h4>Customize Your Emails</h4> 
+                <p>Easily personalize your emails</p>
             </div>
         </div>
     </div>
